@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.naren.twbinding.viewmodel.WriteViewModel" />
+
+        <variable
+            name="listener"
+            type="com.naren.twbinding.util.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.WriteFragment">
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10dp"
+            android:hint="@string/title_hint"
+            android:textColor="?textColor"
+            app:layout_constraintTop_toTopOf="parent"
+            app:textChangedListener="@{model.titleWatcher}" />
+
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10dp"
+            android:hint="@string/details_hint"
+            android:textColor="?textColor"
+            app:layout_constraintTop_toBottomOf="@id/et_title"
+            app:textChangedListener="@{model.detailsWatcher}" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10dp"
+            android:onClick="@{listener::onClicked}"
+            android:text="@string/save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_details" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
